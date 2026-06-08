@@ -119,6 +119,6 @@ All pods should reach `Running`/`Ready`. Check a service's logs with
 
 ## 10. Clients
 
-Clients are not in the cluster: glasses, phone, desktop, and pc are built and deployed separately
+Clients are not in the cluster: glasses, phone, and desktop are built and deployed separately
 to their devices, and the glasses firmware is flashed separately. See each client repo;
 client-glasses has a `firmware/` directory with `fetch-os.sh` and flashing docs.

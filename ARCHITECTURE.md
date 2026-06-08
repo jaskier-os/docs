@@ -55,7 +55,6 @@ Build and deploy to devices, not the cluster.
 - Client Glasses -- Rokid AR glasses listener (Kotlin); connects via the phone relay; includes firmware.
 - Client Phone -- Android companion (Kotlin); also hosts the glasses APK relay/sideloader.
 - Client Desktop -- desktop relay client (Python + PyQt6).
-- Client PC -- PC client.
 
 ### ReID pipeline (parallel subsystem)
 - ReID Worker -- camera feed -> person/face/gait recognition (YOLOv8 + SCRFD + ArcFace ONNX/FAISS,

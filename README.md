@@ -45,7 +45,6 @@ network port (clients) show "-".
 
 | Project        | Repo                      | Purpose                                            | Port |
 | -------------- | ------------------------- | -------------------------------------------------- | ---- |
-| Client PC      | jaskier-os/client-pc      | PC client                                          | -    |
 | Client Desktop | jaskier-os/client-desktop | Desktop relay client (Python + PyQt6)              | -    |
 | Client Glasses | jaskier-os/client-glasses | Rokid AR glasses listener app (Kotlin) + firmware  | -    |
 | Client Phone   | jaskier-os/client-phone   | Android companion app (Kotlin) + glasses APK relay | -    |
