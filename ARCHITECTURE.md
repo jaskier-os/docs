@@ -15,7 +15,6 @@ and how the stack is built and deployed.
 | 10006 | OCR Service                      |
 | 10007 | Kokoro TTS                       |
 | 10009 | Security Agent (health)          |
-| 10011 | ReID Agent (health)              |
 | 10012 | ClickUp Agent (health)           |
 | 10013 | Piper TTS                        |
 | 10014 | Chat History Agent (REST API)    |
@@ -46,7 +45,6 @@ and how the stack is built and deployed.
 Each agent is its own repo, extends BaseAgent from @orchestrator/sdk, connects outbound to the
 orchestrator over WebSocket, and registers a manifest. No orchestrator redeploy is needed to add one.
 - Vision Agent (10005) -- image analysis.
-- ReID Agent (10011) -- bridges reid-worker capabilities to the orchestrator.
 - Chat History Agent (10014) -- conversation history (WS agent + standalone REST API).
 - ClickUp Agent (10012) -- ClickUp integration.
 - Security Agent (10009) -- network/system security tools.
