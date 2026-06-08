@@ -16,7 +16,6 @@ and how the stack is built and deployed.
 | 10007 | Kokoro TTS                       |
 | 10009 | Security Agent (health)          |
 | 10012 | ClickUp Agent (health)           |
-| 10013 | Piper TTS                        |
 | 10014 | Chat History Agent (REST API)    |
 | 10015 | Translator (NLLB-200)            |
 | 10016 | Anthropic STT                    |
@@ -36,8 +35,9 @@ and how the stack is built and deployed.
 ### Speech / vision services
 - Anthropic STT (10016) -- speech-to-text.
 - Transcriber (10003) -- audio transcription (FastAPI + faster-whisper). Built, not cluster-deployed.
-- Kokoro TTS (10007) -- text-to-speech; runs the ghcr.io/remsky/kokoro-fastapi image.
-- Piper TTS (10013), Tera TTS (10018) -- text-to-speech.
+- Kokoro TTS (10007) -- English text-to-speech; runs the ghcr.io/remsky/kokoro-fastapi image.
+- Tera TTS (10018) -- Russian text-to-speech (GLaDOS voice). The orchestrator routes English
+  text to Kokoro and Russian text to Tera (see src/tts.js; PIPER_TTS_URL points at teratts).
 - Translator (10015) -- NLLB-200 multilingual translation (FastAPI).
 - OCR (10006) -- text extraction from images (FastAPI).
 

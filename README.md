@@ -17,9 +17,8 @@ network port (clients) show "-".
 | Communicator  | jaskier-os/communicator  | LLM API gateway, OpenAI-compatible -> Anthropic Claude            | 10000 |
 | Anthropic STT | jaskier-os/anthropic-stt | Speech-to-text via Anthropic                                      | 10016 |
 | Transcriber   | jaskier-os/transcriber   | Audio transcription (faster-whisper); built, not cluster-deployed | 10003 |
-| Kokoro TTS    | jaskier-os/kokoro-tts    | Kokoro text-to-speech                                             | 10007 |
-| Piper TTS     | jaskier-os/piper-tts     | Piper text-to-speech (lightweight)                                | 10013 |
-| Tera TTS      | jaskier-os/teratts-tts   | Tera text-to-speech                                               | 10018 |
+| Kokoro TTS    | jaskier-os/kokoro-tts    | Text-to-speech (English)                                          | 10007 |
+| Tera TTS      | jaskier-os/teratts-tts   | Text-to-speech (Russian; GLaDOS voice)                            | 10018 |
 | Translator    | jaskier-os/translator    | NLLB-200 multilingual translation                                 | 10015 |
 | OCR           | jaskier-os/ocr           | OCR / text extraction from images                                 | 10006 |
 
