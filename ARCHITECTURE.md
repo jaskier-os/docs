@@ -37,7 +37,8 @@ and how the stack is built and deployed.
 ### Speech / vision services
 - Anthropic STT (10016) -- speech-to-text.
 - Transcriber (10003) -- audio transcription (FastAPI + faster-whisper). Built, not cluster-deployed.
-- Kokoro TTS (10007), Piper TTS (10013), Tera TTS (10018) -- text-to-speech.
+- Kokoro TTS (10007) -- text-to-speech; runs the ghcr.io/remsky/kokoro-fastapi image.
+- Piper TTS (10013), Tera TTS (10018) -- text-to-speech.
 - Translator (10015) -- NLLB-200 multilingual translation (FastAPI).
 - OCR (10006) -- text extraction from images (FastAPI).
 
@@ -69,7 +70,6 @@ Build and deploy to devices, not the cluster.
 - mongo:7 -- orchestrator session/chat store.
 - postgres:16-alpine -- ReID relational store.
 - ghcr.io/flaresolverr/flaresolverr -- Cloudflare/JS challenge solver.
-- ghcr.io/remsky/kokoro-fastapi -- Kokoro TTS serving image.
 
 ## Data flow
 
