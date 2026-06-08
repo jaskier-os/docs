@@ -7,8 +7,8 @@ ARCHITECTURE.md.
 ## 1. Prerequisites
 
 - A Linux host with root (or sudo) for the control-plane node.
-- Packages: docker with the buildx plugin, git, curl, unzip.
-- Verify: `docker buildx version`, `git --version`.
+- Packages: docker with the buildx plugin, git, curl, unzip, kubectl.
+- Verify: `docker buildx version`, `git --version`, `kubectl version --client`.
 
 ## 2. Install k3s
 
@@ -18,8 +18,8 @@ Single control-plane node:
 curl -sfL https://get.k3s.io | sh -
 ```
 
-k3s ships its own kubectl; run cluster commands as `sudo k3s kubectl ...`. The `flux` CLI is used
-for Flux bootstrap and reconcile.
+k3s ships its own kubectl; run cluster commands as `sudo k3s kubectl ...` (or copy
+`/etc/rancher/k3s/k3s.yaml` to `~/.kube/config` to use a standalone `kubectl`).
 
 ## 3. In-cluster Docker registry
 
@@ -33,58 +33,78 @@ docker run -d --restart=always --name registry -p 5000:5000 \
   registry:2
 ```
 
-CI pushes images as `localhost:5000/<svc>:<short_sha>` (and `:latest`); deployment manifests
-reference the same `localhost:5000/<svc>:<tag>`.
+Images are pushed as `localhost:5000/<svc>:<tag>`; deployment manifests reference the same
+`localhost:5000/<svc>:<tag>`.
 
-## 4. GitLab runner
+## 4. Build images
 
-- Register a shell runner: `executor=shell`, tags `shell,docker`, `run_untagged=true`.
-- Ensure docker + buildx are installed and usable by the runner user on the host.
-- Install the deploy SSH key at `/root/.ssh/flux-deploy` (the runner uses it to SSH-clone and push
-  to infrastructure/deploy).
-- Enable the runner on each buildable service project.
-- Turn Auto DevOps OFF at instance level and group level (otherwise it injects unwanted
-  code-quality pipelines).
-
-## 5. Flux bootstrap
-
-- Install the Flux controllers: `flux install`.
-- Create the `flux-system` GitRepository pointing at the deploy catalog over SSH:
-  `ssh://git@10.29.71.1:41922/infrastructure/deploy.git`, branch `main`. The deploy SSH key is a
-  user-level SSH key on the GitLab account with repo read access; add the GitLab host:port to the
-  Flux source's `known_hosts`.
-- Create two Kustomizations against path `./clusters/production`: `infrastructure` (runs first)
-  then `apps` (depends on it). Set `prune=true`.
-
-## 6. Secrets + TLS
-
-Secrets and TLS live in infrastructure/deploy with real values (`infrastructure/secrets/*.yaml`,
-`tls/*`). This repo is private/internal and intentionally keeps real secrets; Flux applies them as
-part of the `infrastructure` Kustomization. That same Kustomization creates the `ai` and `recon`
-namespaces. No sanitization step is needed.
-
-## 7. Build images
-
-Push each buildable service repo to `main`; its `.gitlab-ci.yml` builds with
-`docker buildx --push` to `localhost:5000` and bumps its tag in infrastructure/deploy.
-
-Buildable services (cluster + built-but-not-deployed): communicator, orchestrator, anthropic-stt,
-kokoro-tts, piper-tts, teratts-tts, silero-tts, espeech-tts, translator, ocr, context-mode,
-transcriber, chat-history-agent, clickup-agent, reid-agent, security-agent, vision-agent,
-web-search-agent, obsidian-agent, pc-agent (jaskier-os); reid-worker, reid-db-handler,
-reid-analytics (reid). silero-tts, espeech-tts, transcriber, context-mode, pc-agent, and
-obsidian-agent are built but NOT deployed in the cluster (PC-side or unused).
-
-External images used as-is (no build): mongo:7, postgres:16-alpine, nginx:alpine (api-key-gate),
-flaresolverr (ghcr), ghcr.io/remsky/kokoro-fastapi.
-
-## 8. Flux reconcile
-
-Either wait for the sync interval or force it:
+For each service, build its own Dockerfile and push to the registry:
 
 ```
-flux reconcile kustomization infrastructure --with-source
-flux reconcile kustomization apps --with-source
+docker buildx build -f <Dockerfile> -t localhost:5000/<svc>:<tag> --push .
+```
+
+Buildable services: communicator, orchestrator, anthropic-stt, kokoro-tts, piper-tts,
+teratts-tts, translator, ocr, transcriber, chat-history-agent, clickup-agent, reid-agent,
+security-agent, vision-agent, pc-agent (jaskier-os); reid-worker, reid-db-handler, reid-analytics
+(reid). transcriber and pc-agent are built but not cluster-deployed. Each repo's README has its
+exact Dockerfile name and build args (e.g. reid-worker fetches model weights at build time).
+
+External images, used as-is (no build): mongo:7, postgres:16-alpine,
+ghcr.io/flaresolverr/flaresolverr, ghcr.io/remsky/kokoro-fastapi.
+
+This step can be automated with a GitLab shell runner (executor=shell, tags `shell,docker`,
+`run_untagged=true`, docker + buildx available) that builds + pushes on each push to `main`.
+
+## 5. Namespaces
+
+```
+sudo k3s kubectl create namespace ai
+sudo k3s kubectl create namespace recon
+```
+
+`ai` holds the assistant services + agents; `recon` holds the ReID pipeline.
+
+## 6. Secrets and config
+
+Create the Secrets each service expects (the shared API key, datastore credentials, provider
+keys). Supply your own values:
+
+```
+sudo k3s kubectl -n ai create secret generic ai-secrets \
+  --from-literal=API_KEY=<your-key> \
+  --from-literal=ANTHROPIC_API_KEY=<your-key>
+sudo k3s kubectl -n recon create secret generic reid-secrets \
+  --from-literal=API_KEY=<your-key>
+```
+
+Each repo's `.env.example` lists the exact variables it needs; mirror those into the namespace
+Secret/ConfigMap referenced by its Deployment.
+
+## 7. Deploy services
+
+Write a standard Kubernetes `Deployment` + `Service` per service (image
+`localhost:5000/<svc>:<tag>`, the port from ARCHITECTURE.md, env from the Secret above) and apply
+them into the right namespace:
+
+```
+sudo k3s kubectl apply -n ai    -f manifests/ai/
+sudo k3s kubectl apply -n recon -f manifests/recon/
+```
+
+Deploy the external images (mongo:7, postgres:16-alpine, flaresolverr, kokoro-fastapi) as their
+own Deployments + Services in the same way.
+
+## 8. Expose externally
+
+Expose the public entry points (orchestrator, and any HTTP service you need to reach) with either
+a `NodePort` Service or an `Ingress`:
+
+```
+# simplest: NodePort
+sudo k3s kubectl -n ai expose deployment orchestrator \
+  --type=NodePort --port=10001 --name=orchestrator-ext
+# or an Ingress object routing a hostname/path to the service ClusterIP
 ```
 
 ## 9. Verify
@@ -92,11 +112,13 @@ flux reconcile kustomization apps --with-source
 ```
 sudo k3s kubectl get pods -n ai
 sudo k3s kubectl get pods -n recon
-flux get kustomizations
 ```
+
+All pods should reach `Running`/`Ready`. Check a service's logs with
+`sudo k3s kubectl logs -n ai deploy/<svc>` if one crash-loops.
 
 ## 10. Clients
 
-Clients are not in the cluster: glasses, phone, desktop, pc, and glasses-mouse are built and
-deployed separately to their devices, and the glasses firmware is flashed separately. See each
-client repo; client-glasses has a `firmware/` directory with `fetch-os.sh` and flashing docs.
+Clients are not in the cluster: glasses, phone, desktop, and pc are built and deployed separately
+to their devices, and the glasses firmware is flashed separately. See each client repo;
+client-glasses has a `firmware/` directory with `fetch-os.sh` and flashing docs.
