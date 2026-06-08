@@ -1,13 +1,17 @@
 # jaskier-os
 
-Canonical whole-system documentation for the jaskier-os stack: a voice/vision AI assistant
-platform built around a central orchestrator that classifies intent, routes to specialized
-agents and speech services, and talks to Anthropic Claude through a single LLM gateway. It runs
-as containerized services on a single-node k3s cluster. The codebase was split from a monorepo
-into standalone repos; this repo documents how they fit together.
+A voice/vision AI assistant platform built around a central orchestrator that classifies
+intent, routes to specialized agents and speech services, and talks to Anthropic Claude
+through a single LLM gateway. It runs as containerized services on a single-node k3s cluster.
+The codebase was split from a monorepo into standalone repos; this site documents how they
+fit together.
 
-Ports below come from the orchestrator port table (see ARCHITECTURE.md). Services with no
-network port (clients) show "-".
+## Where to start
+
+- **[Architecture](ARCHITECTURE.md)** — port allocation, service map, data flow, build + deploy.
+- **[Install](INSTALL.md)** — stand up the whole stack on bare metal.
+- **[Features](features/index.md)** — what the phone and glasses clients actually do, with
+  screenshots and clips.
 
 ## Backend services
 
@@ -55,11 +59,3 @@ network port (clients) show "-".
 | MongoDB      | mongo:7                           | Orchestrator session/chat store | -    |
 | PostgreSQL   | postgres:16-alpine                | ReID relational store           | -    |
 | FlareSolverr | ghcr.io/flaresolverr/flaresolverr | Cloudflare/JS challenge solver  | -    |
-
-## Pointers
-
-- Stand up the whole stack: see docs/INSTALL.md.
-- Architecture + ports: see docs/ARCHITECTURE.md.
-- Phone/glasses features: see docs/features/.
-- Per-project detail: each repo's own README / CLAUDE.md.
-- Rendered wiki: this repo builds to a MkDocs site (see mkdocs.yml); `mkdocs serve` locally.
