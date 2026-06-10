@@ -80,6 +80,8 @@ them. No manual source selection is required.
 When the phone receives a call, the glasses display the caller's name and number. One tap
 accepts the call; two taps declines it.
 
+![Incoming call on the glasses display](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/calls/incoming-call.jpg)
+
 #### During a call
 
 While a call is in progress, the glasses show an on-display indication of the active call.
@@ -159,6 +161,9 @@ Records audio to the phone app without an indicator LED or any on-display sign t
 running. It captures from an omnidirectional microphone, so all surrounding sound is recorded.
 Recordings can be transcribed automatically, shared, and, if required, kept always-on.
 
+![Audio recordings list in the phone app](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/audio/recordings-list.jpg)
+![A recording with per-segment transcription and playback](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/audio/recording-detail.jpg)
+
 #### Mouse
 
 Controls a computer's mouse cursor through head movement. The glasses stream motion data to
@@ -209,6 +214,10 @@ level:
 Moving or picking up the glasses dismisses the LED.
 
 ## Phone
+
+The phone app's Apps screen gathers the glasses functions and phone-side tools in one place.
+
+![Phone app — Apps screen](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/phone/apps.jpg)
 
 ### Map
 
