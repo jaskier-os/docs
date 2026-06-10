@@ -18,13 +18,13 @@ relative path, or paste an image into the web editor to have it uploaded automat
 **Image:**
 
 ```markdown
-![Assistant chat screen](assets/phone-chat.png)
+![Assistant chat screen](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/phone-chat.png)
 ```
 
 **Video** — wikis don't embed `<video>` players; upload the clip and link it:
 
 ```markdown
-[Wake-word demo (mp4)](assets/phone-wakeword.mp4)
+[Wake-word demo (mp4)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/phone-wakeword.mp4)
 ```
 
 > **Tip**

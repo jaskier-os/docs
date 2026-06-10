@@ -6,9 +6,9 @@ The phone provides a map for browsing, planning a journey, and starting it. It o
 features than the native Google or Yandex map applications, but it is designed to drive
 navigation on the glasses reliably. Both Google and Yandex map backends are supported.
 
-[Google Maps demo (mp4)](assets/map/google.mp4)
+[Google Maps demo (mp4)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/map/google.mp4)
 
-[Yandex Maps demo (mp4)](assets/map/yandex.mp4)
+[Yandex Maps demo (mp4)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/map/yandex.mp4)
 
 ## Desktop relay
 

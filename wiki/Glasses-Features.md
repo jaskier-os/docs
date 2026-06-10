@@ -18,7 +18,7 @@ the assistant. If you took a photo within the previous minute, it is attached to
 automatically, allowing you to ask about what you have just seen. The reply is returned both
 as speech (text-to-speech) and as text on the display.
 
-![Live AI chat on the glasses display](assets/chat/ai-chat.jpg)
+![Live AI chat on the glasses display](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/chat/ai-chat.jpg)
 
 ### Tools
 
@@ -120,28 +120,28 @@ approach each one.
 A simple task list. Tasks can be created and managed from the phone or through conversation
 with the assistant, which is always aware of the current list.
 
-![Todo tab](assets/tabs/todos.jpg)
+![Todo tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/todos.jpg)
 
 ### Jobs
 
 Schedule the assistant to carry out a task after a delay. The task runs in the context of the
 phone.
 
-![Jobs tab](assets/tabs/jobs.jpg)
+![Jobs tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/jobs.jpg)
 
 ### Alarms
 
 Ask the assistant to set an alarm; it then behaves as a standard alarm. It is intended to be
 set by voice but can also be managed from the phone app.
 
-![Alarms tab](assets/tabs/alarms.jpg)
+![Alarms tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/alarms.jpg)
 
 ### Telegram
 
 A Telegram client on the glasses for listing chats, reading messages, and replying. A reply
 is spoken, transcribed to text, and sent.
 
-![Telegram saved messages](assets/tabs/telegram-saved.jpg)
+![Telegram saved messages](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/telegram-saved.jpg)
 
 ### Audio recorder
 
@@ -165,7 +165,7 @@ assistant detects that it has been addressed in the conversation. It can be usef
 sales calls or interviews. It can also be set to use system audio instead of the outer
 microphone, allowing it to be used during calls.
 
-[Copilot demo (mp4)](assets/copilot/copilot.mp4)
+[Copilot demo (mp4)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/copilot/copilot.mp4)
 
 ### Face scanning (ReID)
 
