@@ -1,15 +1,19 @@
 # Two-way GitLab<->GitHub sync for jaskier-os/docs.
-# Runs on: push to default branch, and external pipeline trigger (from the GitHub Action).
-# Skips its own bot commits to avoid loops.
+# GitLab is canonical and only reachable on the VPN subnet, so GitHub can't reach in.
+# Direction is therefore GitLab-initiated:
+#   - push to main          -> immediate GitLab->GitHub propagation.
+#   - scheduled (every 10m)  -> pulls GitHub-side changes (PR merges) back; cheap ls-remote
+#                              pre-check exits fast when already in sync.
+# Conflicts open a GitHub PR (see scripts/sync-gitlab-github.sh).
 stages: [sync]
 
 sync-github:
   stage: sync
   tags: [shell]
   rules:
-    # Triggered by the GitHub Action (GitHub -> GitLab direction).
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    # Normal push to main, but NOT the sync bot's own commit (loop guard).
+    # Scheduled poll (GitHub -> GitLab direction).
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    # Push to main, but NOT the sync bot's own commit (loop guard).
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_COMMIT_AUTHOR != "gitlab-github-sync <sync-bot@jaskier-os>"'
   script:
     - bash scripts/sync-gitlab-github.sh

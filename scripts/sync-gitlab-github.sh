@@ -27,10 +27,23 @@ export GIT_SSL_NO_VERIFY=1   # self-signed GitLab
 git config --global user.email "sync-bot@jaskier-os"
 git config --global user.name  "gitlab-github-sync"
 
+GL_URL="https://oauth2:${GITLAB_PUSH_TOKEN}@${GL_HOST}/${GL_PATH}.git"
+GH_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GH_REPO}.git"
+
+# Cheap pre-check: compare the two main SHAs via ls-remote (no clone).
+# The scheduled pipeline runs often; skip the heavy path when already in sync.
+GL_HEAD="$(git ls-remote "$GL_URL" "refs/heads/${BRANCH}" | awk '{print $1}')"
+GH_HEAD="$(git ls-remote "$GH_URL" "refs/heads/${BRANCH}" | awk '{print $1}')"
+echo "ls-remote: gitlab=${GL_HEAD:-none}  github=${GH_HEAD:-none}"
+if [ -n "$GL_HEAD" ] && [ "$GL_HEAD" = "$GH_HEAD" ]; then
+  echo "already in sync (ls-remote match); skipping full reconcile."
+  exit 0
+fi
+
 work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
-git clone -q "https://oauth2:${GITLAB_PUSH_TOKEN}@${GL_HOST}/${GL_PATH}.git" "$work"
+git clone -q "$GL_URL" "$work"
 cd "$work"
-git remote add github "https://x-access-token:${GITHUB_TOKEN}@github.com/${GH_REPO}.git"
+git remote add github "$GH_URL"
 git fetch -q origin "$BRANCH"
 git fetch -q github "$BRANCH"
 
