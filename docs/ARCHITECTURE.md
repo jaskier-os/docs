@@ -14,7 +14,6 @@ and how the stack is built and deployed.
 | 10005 | Vision Agent (health)            |
 | 10006 | OCR Service                      |
 | 10007 | Kokoro TTS                       |
-| 10009 | Security Agent (health)          |
 | 10012 | ClickUp Agent (health)           |
 | 10014 | Chat History Agent (REST API)    |
 | 10015 | Translator (NLLB-200)            |
@@ -47,7 +46,6 @@ orchestrator over WebSocket, and registers a manifest. No orchestrator redeploy 
 - Vision Agent (10005) -- image analysis.
 - Chat History Agent (10014) -- conversation history (WS agent + standalone REST API).
 - ClickUp Agent (10012) -- ClickUp integration.
-- Security Agent (10009) -- network/system security tools.
 - PC Agent (10004) -- NL -> shell with safety validation + remote-control sessions. Built, not cluster-deployed.
 
 ### Clients

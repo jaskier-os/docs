@@ -28,7 +28,6 @@ network port (clients) show "-".
 | ------------------ | ----------------------------- | --------------------------------------------------------------------- | ----- |
 | Chat History Agent | jaskier-os/chat-history-agent | Conversation history store (WS agent + REST API)                      | 10014 |
 | ClickUp Agent      | jaskier-os/clickup-agent      | ClickUp integration (MCP + agentic wrapper)                           | 10012 |
-| Security Agent     | jaskier-os/security-agent     | Network/system security tools agent                                   | 10009 |
 | Vision Agent       | jaskier-os/vision-agent       | Image analysis                                                        | 10005 |
 | PC Agent           | jaskier-os/pc-agent           | NL -> shell with safety + remote control; built, not cluster-deployed | 10004 |
 

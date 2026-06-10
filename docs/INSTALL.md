@@ -45,8 +45,8 @@ docker buildx build -f <Dockerfile> -t localhost:5000/<svc>:<tag> --push .
 ```
 
 Buildable services: communicator, orchestrator, anthropic-stt, kokoro-tts, piper-tts,
-teratts-tts, translator, ocr, transcriber, chat-history-agent, clickup-agent, reid-agent,
-security-agent, vision-agent, pc-agent (jaskier-os); reid-worker, reid-db-handler, reid-analytics
+teratts-tts, translator, ocr, transcriber, chat-history-agent, clickup-agent,
+vision-agent, pc-agent (jaskier-os); reid-worker, reid-db-handler, reid-analytics
 (reid). transcriber and pc-agent are built but not cluster-deployed. Each repo's README has its
 exact Dockerfile name and build args (e.g. reid-worker fetches model weights at build time).
 
