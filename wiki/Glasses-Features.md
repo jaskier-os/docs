@@ -165,7 +165,9 @@ assistant detects that it has been addressed in the conversation. It can be usef
 sales calls or interviews. It can also be set to use system audio instead of the outer
 microphone, allowing it to be used during calls.
 
-[Copilot demo (mp4)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/copilot/copilot.mp4)
+[![Copilot demo — click to play](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/copilot/copilot-poster.jpg)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/copilot/copilot.mp4)
+
+*Copilot demo — click to play.*
 
 ### Face scanning (ReID)
 
