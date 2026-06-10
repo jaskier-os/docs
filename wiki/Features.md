@@ -180,9 +180,7 @@ assistant detects that it has been addressed in the conversation. It can be usef
 sales calls or interviews. It can also be set to use system audio instead of the outer
 microphone, allowing it to be used during calls.
 
-[![Copilot demo — click to play](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/copilot/copilot-poster.jpg)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/copilot/copilot.mp4)
-
-*Copilot demo — click to play.*
+https://github.com/user-attachments/assets/0893f702-f33a-44d8-af92-1beed8f02aa6
 
 #### Face scanning (ReID)
 
@@ -225,13 +223,12 @@ The phone provides a map for browsing, planning a journey, and starting it. It o
 features than the native Google or Yandex map applications, but it is designed to drive
 navigation on the glasses reliably. Both Google and Yandex map backends are supported.
 
-[![Google Maps demo — click to play](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/map/google-poster.jpg)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/map/google.mp4)
 
-*Google Maps demo — click to play.*
+https://github.com/user-attachments/assets/efb4bc5b-3b08-4cc4-93e7-292121b07b59
 
-[![Yandex Maps demo — click to play](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/map/yandex-poster.jpg)](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/map/yandex.mp4)
 
-*Yandex Maps demo — click to play.*
+https://github.com/user-attachments/assets/481f62a6-8592-454f-a1a9-686956095ff4
+
 
 ### Desktop relay
 
