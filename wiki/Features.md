@@ -127,6 +127,13 @@ with the assistant, which is always aware of the current list.
 
 ![Todo tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/todos.jpg)
 
+#### Notes
+
+A mirror of your Telegram Saved Messages, surfaced as notes — many people use Saved Messages
+as a personal notebook, so they are presented here directly.
+
+![Notes tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/telegram-saved.jpg)
+
 #### Jobs
 
 Schedule the assistant to carry out a task after a delay. The task runs in the context of the
@@ -145,8 +152,6 @@ set by voice but can also be managed from the phone app.
 
 A Telegram client on the glasses for listing chats, reading messages, and replying. A reply
 is spoken, transcribed to text, and sent.
-
-![Telegram saved messages](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/telegram-saved.jpg)
 
 #### Audio recorder
 
