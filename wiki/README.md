@@ -40,8 +40,6 @@ relevant project) if you want it live on GitLab before the mirror.
 | `Home.md`         | Landing + service/port tables |
 | `Architecture.md` | Ports, service map, data flow, build/deploy |
 | `Installation.md` | Bare-metal k3s runbook |
-| `Features.md`     | Client-feature overview + how to add media |
-| `Phone-App.md`    | Android companion app |
-| `Glasses-App.md`  | Rokid glasses listener |
+| `Features.md`     | Glasses + phone features (consumer-facing) |
 | `_Sidebar.md`     | Navigation (wiki-only) |
 | `_Footer.md`      | Footer (wiki-only) |

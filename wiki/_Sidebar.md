@@ -9,5 +9,3 @@
 
 **Features**
 - [[Features]]
-- [[Phone App|Phone-App]]
-- [[Glasses App|Glasses-App]]
