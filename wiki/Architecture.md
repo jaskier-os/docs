@@ -19,6 +19,7 @@ and how the stack is built and deployed.
 | 10015 | Translator (NLLB-200)            |
 | 10016 | Anthropic STT                    |
 | 10018 | Tera TTS                         |
+| 9284  | ReID Worker (HTTP, /health)      |
 | 3001  | ReID DB Handler                  |
 | 3400  | ReID Analytics backend           |
 
@@ -55,7 +56,7 @@ Build and deploy to devices, not the cluster.
 - Client Desktop -- desktop relay client (Python + PyQt6).
 
 ### ReID pipeline (parallel subsystem)
-- ReID Worker -- camera feed -> person/face/gait recognition (YOLOv8 + SCRFD + ArcFace ONNX/FAISS,
+- ReID Worker (9284) -- camera feed -> person/face/gait recognition (YOLOv8 + SCRFD + ArcFace ONNX/FAISS,
   OpenGait); posts new data to reid-db-handler.
 - ReID DB Handler (3001) -- Koa API; the only component allowed to touch the ReID/FAISS database.
   Everything goes through this API; nothing connects to the DB directly.

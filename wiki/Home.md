@@ -38,7 +38,7 @@ fit together.
 
 | Project         | Repo                 | Purpose                                                               | Port |
 | --------------- | -------------------- | --------------------------------------------------------------------- | ---- |
-| ReID Worker     | reid/reid-worker     | Camera feed -> person/face/gait recognition; posts to reid-db-handler | -    |
+| ReID Worker     | reid/reid-worker     | Camera feed -> person/face/gait recognition; posts to reid-db-handler | 9284 |
 | ReID DB Handler | reid/reid-db-handler | Only component allowed to touch the ReID/FAISS database               | 3001 |
 | ReID Analytics  | reid/reid-analytics  | Aggregates reid-db-handler data; recognized-people dashboard          | 3400 |
 
