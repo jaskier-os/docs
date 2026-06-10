@@ -97,8 +97,12 @@ glasses you can pause playback and skip to the next or previous track.
 When a Telegram message arrives on the phone, it is shown on the glasses and read aloud. To
 reply, hold the touchpad and speak; your speech is transcribed to text and sent.
 
-Read-aloud is suspended during a phone call to avoid interrupting it. If the call is running
+TTS is muted during a phone call to avoid confusion. If the call is running
 on a desktop rather than the phone, this suspension may not apply.
+
+
+https://github.com/user-attachments/assets/ff4f717a-3ec7-45cc-82db-4c1dc3076666
+
 
 ### Apps & tabs
 
