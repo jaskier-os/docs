@@ -118,7 +118,8 @@ Recordings can be transcribed automatically, shared, and, if required, kept alwa
 #### Telegram notifications
 
 When a Telegram message arrives on the phone, it is shown on the glasses and read aloud. To
-reply, hold the touchpad and speak; your speech is transcribed to text and sent.
+reply, hold the touchpad and speak; your speech is transcribed to text and sent. The reply
+flow was inspired by [this Rokid Relay community post](https://www.reddit.com/r/rokid_official/comments/1tpm05n/rokid_relay_v012_reply_to_android_notifications/).
 
 TTS is muted during a phone call to avoid confusion. If the call is running
 on a desktop rather than the phone, this suspension may not apply.
