@@ -62,3 +62,5 @@ network port (clients) show "-".
 - Phone/glasses features: see docs/features/.
 - Per-project detail: each repo's own README / CLAUDE.md.
 - Rendered wiki: this repo builds to a MkDocs site (see mkdocs.yml); `mkdocs serve` locally.
+
+<!-- github-side sync test 1781130118 -->
