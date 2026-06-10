@@ -5,7 +5,7 @@ phone is the companion that pairs with them, relays to the backend, and adds its
 
 ## Glasses
 
-### Voice & AI assistant
+### Assistant
 
 #### Wake word
 
@@ -67,13 +67,19 @@ its own set of tools. The assistant selects the appropriate agent for a request 
 Additional agents can be added easily. Each agent registers itself with the assistant on
 connection, so new capabilities extend the system without rebuilding or redeploying it.
 
-### Bluetooth & calls
+#### Copilot
 
-#### Audio handoff
+An optional always-on assistant. It transcribes both microphones — yours and the other
+person's — and continuously sends the conversation to an assistant configured with a specific
+system prompt. When it identifies something relevant, it presents a suggestion on the display.
+Each suggestion remains on screen for five minutes, and is dismissed automatically once the
+assistant detects that it has been addressed in the conversation. It can be useful during
+sales calls or interviews. It can also be set to use system audio instead of the outer
+microphone, allowing it to be used during calls.
 
-When the phone and another device, such as a computer, are both connected, the glasses follow
-whichever device is currently playing and switch the audio accordingly as you move between
-them. No manual source selection is required.
+https://github.com/user-attachments/assets/0893f702-f33a-44d8-af92-1beed8f02aa6
+
+### Calls & audio
 
 #### Incoming calls
 
@@ -87,12 +93,29 @@ accepts the call; two taps declines it.
 While a call is in progress, the glasses show an on-display indication of the active call.
 Press and hold the touchpad to mute the microphone; hold again to unmute.
 
-### Music
+#### Audio handoff
+
+When the phone and another device, such as a computer, are both connected, the glasses follow
+whichever device is currently playing and switch the audio accordingly as you move between
+them. No manual source selection is required.
+
+#### Music
 
 Audio playing on the phone is shown in the Music tab, including track and artist. From the
 glasses you can pause playback and skip to the next or previous track.
 
-### Telegram notifications
+#### Audio recorder
+
+Records audio to the phone app without an indicator LED or any on-display sign that it is
+running. It captures from an omnidirectional microphone, so all surrounding sound is recorded.
+Recordings can be transcribed automatically, shared, and, if required, kept always-on.
+
+![Audio recordings list in the phone app](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/audio/recordings-list.jpg)
+![A recording with per-segment transcription and playback](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/audio/recording-detail.jpg)
+
+### Messaging
+
+#### Telegram notifications
 
 When a Telegram message arrives on the phone, it is shown on the glasses and read aloud. To
 reply, hold the touchpad and speak; your speech is transcribed to text and sent.
@@ -104,7 +127,42 @@ on a desktop rather than the phone, this suspension may not apply.
 https://github.com/user-attachments/assets/ff4f717a-3ec7-45cc-82db-4c1dc3076666
 
 
-### Apps & tabs
+#### Telegram
+
+A Telegram client on the glasses for listing chats, reading messages, and replying. A reply
+is spoken, transcribed to text, and sent.
+
+#### Notes
+
+A mirror of your Telegram Saved Messages, surfaced as notes — many people use Saved Messages
+as a personal notebook, so they are presented here directly.
+
+![Notes tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/telegram-saved.jpg)
+
+### Tasks & reminders
+
+#### Todo
+
+A simple task list. Tasks can be created and managed from the phone or through conversation
+with the assistant, which is always aware of the current list.
+
+![Todo tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/todos.jpg)
+
+#### Jobs
+
+Schedule the assistant to carry out a task after a delay. The task runs in the context of the
+phone.
+
+![Jobs tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/jobs.jpg)
+
+#### Alarms
+
+Ask the assistant to set an alarm; it then behaves as a standard alarm. It is intended to be
+set by voice but can also be managed from the phone app.
+
+![Alarms tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/alarms.jpg)
+
+### Vision & AR
 
 #### Translation
 
@@ -126,47 +184,12 @@ During an active journey the glasses display a map showing the route and current
 line of text at the top indicates the previous, current, and next step, updating as you
 approach each one.
 
-#### Todo
+#### Face scanning (ReID)
 
-A simple task list. Tasks can be created and managed from the phone or through conversation
-with the assistant, which is always aware of the current list.
+Scans the faces of people nearby into the recognition database. As a person is captured from
+several angles and enough frames are collected, a 3D scan of their face is produced.
 
-![Todo tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/todos.jpg)
-
-#### Notes
-
-A mirror of your Telegram Saved Messages, surfaced as notes — many people use Saved Messages
-as a personal notebook, so they are presented here directly.
-
-![Notes tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/telegram-saved.jpg)
-
-#### Jobs
-
-Schedule the assistant to carry out a task after a delay. The task runs in the context of the
-phone.
-
-![Jobs tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/jobs.jpg)
-
-#### Alarms
-
-Ask the assistant to set an alarm; it then behaves as a standard alarm. It is intended to be
-set by voice but can also be managed from the phone app.
-
-![Alarms tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/alarms.jpg)
-
-#### Telegram
-
-A Telegram client on the glasses for listing chats, reading messages, and replying. A reply
-is spoken, transcribed to text, and sent.
-
-#### Audio recorder
-
-Records audio to the phone app without an indicator LED or any on-display sign that it is
-running. It captures from an omnidirectional microphone, so all surrounding sound is recorded.
-Recordings can be transcribed automatically, shared, and, if required, kept always-on.
-
-![Audio recordings list in the phone app](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/audio/recordings-list.jpg)
-![A recording with per-segment transcription and playback](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/audio/recording-detail.jpg)
+### Device control
 
 #### Mouse
 
@@ -174,30 +197,15 @@ Controls a computer's mouse cursor through head movement. The glasses stream mot
 the phone, which relays it to the desktop; a tap on the touchpad acts as a click. The desktop
 must be connected to the phone as a Bluetooth HID device for this to work.
 
-#### Copilot
+### System
 
-An optional always-on assistant. It transcribes both microphones — yours and the other
-person's — and continuously sends the conversation to an assistant configured with a specific
-system prompt. When it identifies something relevant, it presents a suggestion on the display.
-Each suggestion remains on screen for five minutes, and is dismissed automatically once the
-assistant detects that it has been addressed in the conversation. It can be useful during
-sales calls or interviews. It can also be set to use system audio instead of the outer
-microphone, allowing it to be used during calls.
-
-https://github.com/user-attachments/assets/0893f702-f33a-44d8-af92-1beed8f02aa6
-
-#### Face scanning (ReID)
-
-Scans the faces of people nearby into the recognition database. As a person is captured from
-several angles and enough frames are collected, a 3D scan of their face is produced.
-
-### File sync
+#### File sync
 
 Each photo or video you capture is transferred to the phone automatically, once the glasses
 complete their initial on-device processing. This takes roughly 10 seconds, and may take
 longer while a Wi-Fi connection to the phone is established.
 
-### Battery & sleep
+#### Battery & sleep
 
 The glasses manage their own power state. The display turns off after a period of no touchpad
 or button input and turns back on as soon as input resumes.
