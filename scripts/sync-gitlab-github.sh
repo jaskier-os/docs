@@ -19,7 +19,8 @@ set -euo pipefail
 BRANCH="${CI_DEFAULT_BRANCH:-main}"
 GH_REPO="jaskier-os/docs"
 GH_OWNER="jaskier-os"
-GL_HOST="${CI_SERVER_HOST:-10.29.71.1:4443}"
+# CI_SERVER_HOST is portless; include CI_SERVER_PORT (GitLab listens on 4443 here).
+GL_HOST="${CI_SERVER_HOST:-10.29.71.1}:${CI_SERVER_PORT:-4443}"
 GL_PATH="${CI_PROJECT_PATH:-jaskier-os/docs}"
 
 export GIT_SSL_NO_VERIFY=1   # self-signed GitLab
