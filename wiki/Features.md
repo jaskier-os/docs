@@ -16,7 +16,7 @@ restricts voice capture to that model. It is disabled by default — voice activ
 The phone supports the same wake-word activation. It is likewise disabled by default and will
 not function unless an on-phone wake-word model is installed.
 
-#### Live AI chat
+#### Live AI chat 📷
 
 Hold the touchpad to speak to the assistant. Your speech is transcribed to text and sent to
 the assistant. If you took a photo within the previous minute, it is attached to your message
@@ -67,7 +67,7 @@ its own set of tools. The assistant selects the appropriate agent for a request 
 Additional agents can be added easily. Each agent registers itself with the assistant on
 connection, so new capabilities extend the system without rebuilding or redeploying it.
 
-#### Copilot
+#### Copilot 🎥
 
 An optional always-on assistant. It transcribes both microphones — yours and the other
 person's — and continuously sends the conversation to an assistant configured with a specific
@@ -81,7 +81,7 @@ https://github.com/user-attachments/assets/0893f702-f33a-44d8-af92-1beed8f02aa6
 
 ### Calls & audio
 
-#### Incoming calls
+#### Incoming calls 📷
 
 When the phone receives a call, the glasses display the caller's name and number. One tap
 accepts the call; two taps declines it.
@@ -104,7 +104,7 @@ them. No manual source selection is required.
 Audio playing on the phone is shown in the Music tab, including track and artist. From the
 glasses you can pause playback and skip to the next or previous track.
 
-#### Audio recorder
+#### Audio recorder 📷
 
 Records audio to the phone app without an indicator LED or any on-display sign that it is
 running. It captures from an omnidirectional microphone, so all surrounding sound is recorded.
@@ -115,7 +115,7 @@ Recordings can be transcribed automatically, shared, and, if required, kept alwa
 
 ### Messaging
 
-#### Telegram notifications
+#### Telegram notifications 🎥
 
 When a Telegram message arrives on the phone, it is shown on the glasses and read aloud. To
 reply, hold the touchpad and speak; your speech is transcribed to text and sent. The reply
@@ -133,7 +133,7 @@ https://github.com/user-attachments/assets/ff4f717a-3ec7-45cc-82db-4c1dc3076666
 A Telegram client on the glasses for listing chats, reading messages, and replying. A reply
 is spoken, transcribed to text, and sent.
 
-#### Notes
+#### Notes 📷
 
 A mirror of your Telegram Saved Messages, surfaced as notes — many people use Saved Messages
 as a personal notebook, so they are presented here directly.
@@ -142,21 +142,21 @@ as a personal notebook, so they are presented here directly.
 
 ### Tasks & reminders
 
-#### Todo
+#### Todo 📷
 
 A simple task list. Tasks can be created and managed from the phone or through conversation
 with the assistant, which is always aware of the current list.
 
 ![Todo tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/todos.jpg)
 
-#### Jobs
+#### Jobs 📷
 
 Schedule the assistant to carry out a task after a delay. The task runs in the context of the
 phone.
 
 ![Jobs tab](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/tabs/jobs.jpg)
 
-#### Alarms
+#### Alarms 📷
 
 Ask the assistant to set an alarm; it then behaves as a standard alarm. It is intended to be
 set by voice but can also be managed from the phone app.
@@ -230,7 +230,7 @@ The phone app's Apps screen gathers the glasses functions and phone-side tools i
 
 ![Phone app — Apps screen](https://raw.githubusercontent.com/wiki/jaskier-os/docs/assets/phone/apps.jpg)
 
-### Map
+### Map 🎥
 
 The phone provides a map for browsing, planning a journey, and starting it. It offers fewer
 features than the native Google or Yandex map applications, but it is designed to drive
