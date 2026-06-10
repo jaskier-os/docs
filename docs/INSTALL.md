@@ -8,6 +8,9 @@ ARCHITECTURE.md.
 
 - A Linux host with root (or sudo) for the control-plane node.
 - Packages: docker with the buildx plugin, git, curl, unzip, kubectl.
+- `coturn` installed system-wide on the host (e.g. `apt install coturn`). The orchestrator's
+  WebRTC relay uses coturn as a host systemd service on UDP/TCP 3478 — it is NOT a cluster
+  workload. Enable and start it (`systemctl enable --now coturn`) and open port 3478.
 - Verify: `docker buildx version`, `git --version`, `kubectl version --client`.
 
 ## 2. Install k3s
@@ -44,11 +47,8 @@ For each service, build its own Dockerfile and push to the registry:
 docker buildx build -f <Dockerfile> -t localhost:5000/<svc>:<tag> --push .
 ```
 
-Buildable services: communicator, orchestrator, anthropic-stt, kokoro-tts, piper-tts,
-teratts-tts, translator, ocr, transcriber, chat-history-agent, clickup-agent,
-vision-agent, pc-agent (jaskier-os); reid-worker, reid-db-handler, reid-analytics
-(reid). transcriber and pc-agent are built but not cluster-deployed. Each repo's README has its
-exact Dockerfile name and build args (e.g. reid-worker fetches model weights at build time).
+Each repo's README has its exact Dockerfile name and build args (e.g. reid-worker fetches
+model weights at build time).
 
 External images, used as-is (no build): mongo:7, postgres:16-alpine,
 ghcr.io/flaresolverr/flaresolverr, ghcr.io/remsky/kokoro-fastapi.
